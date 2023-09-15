@@ -1,49 +1,56 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #content {
     display: flex;
     flex-direction: column;
-    flex: 1 100%;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    margin-top: 200px;
+    gap: 10px;
     background-color: rgb(65, 41, 41);
     width: fit-content;
     border-radius: 5px;
-    padding: 20px;
-    margin: 250px;
-
+    padding: 40px;
 }
 
 #display  {
     display: flex;
     border: solid;
-    width: 198px;
     border-color:slategrey;
     border-radius: 5px;
     background-color: rgb(180, 158, 130);
     border-style: double;
+    align-items: center;
+    width: 396px;
+    height: 80px;
 
 }
 
 #buttons {
     display: flex;
     flex-wrap: wrap;
-    width: 200px;
     justify-content: space-between;
+    width: 400px;
     gap: 2px
 }
 
 #clear {
-    width: 99px;
+    width: 198px;
 }
 
 #zero {
-    width: 99px;
+    width: 198px;
 }
 
 button {
-    width: 48px;
-    height: 40px;
+    width: 96px;
+    height: 80px;
     border: solid;
     border-color: brown;
     border-radius: 5px;
@@ -72,4 +79,6 @@ button:hover {
 
 p {
     padding-left: 10px;
+    font-size: xx-large;
+
 }

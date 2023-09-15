@@ -48,39 +48,78 @@ buttons.forEach( button => {
     button.addEventListener("click", e => {
 
         str = e.target.textContent;
-        calculate(str, e);
+        calculate(str);
 
     });
 });
 
-function calculate(str, e)
+
+document.addEventListener("keydown", e => {
+
+    e.preventDefault();
+    str = e.key;
+    console.log(str);
+
+    calculate(str);
+
+
+    //if (str === "1" 
+    //|| str === "2"
+    //|| str === "3"
+    //|| str === "4"
+    //|| str === "5"
+    //|| str === "6"
+    //|| str === "7"
+    //|| str === "8"
+    //|| str === "9"
+    //|| str === "-"
+    //|| str === "+"
+    //|| str === "/"
+    //|| str === "*"
+    //|| str === "."
+    //|| str === "0"
+    //|| str === "Enter"
+    //|| str === "Backspace"
+    //|| str == "Escape") 
+    //{
+    //}
+//
+
+});
+
+function calculate(str)
 {
     if (op === "" 
     && two === ""
-    && e.target.getAttribute("class") === "number")
+    && (!isNaN(+str) || str === ".") 
+    && str !== " ")
     {
         if (one.includes(".") && str === ".") return;
         one += str;
-        console.log(+str);
+        console.log(`one: ${+str}`);
     }
     else if (one !== "" 
-    && e.target.getAttribute("class") === "operator r")
+    && (str == "-"
+    || str == "+"
+    || str == "/"
+    || str == "*"))
     {
         op = str;
-        console.log(str);
+        console.log(`op: ${str}`);
     }
     else if (one !== "" 
     && op !== "" 
-    && e.target.getAttribute("class") === "number")
+    && (!isNaN(+str) || str === ".") 
+    && str !== " ")
     {
         if (two.includes(".") && str === ".") return;
         two += str;
-        console.log(+str);
+        console.log(`twwo: ${+str}`);
     }
     else if (one !== ""
     && two !== ""
     && op !== ""
-    && (str === "operator" || str === "="))
+    && (str === "operator" || str === "=" || str === "Enter"))
     {
         let result = operate(one, two, op);
         if (!Number.isInteger(result))
@@ -99,7 +138,7 @@ function calculate(str, e)
         
     }
 
-    if (str === "<-")
+    if (str === "<-" || str === "Backspace")
     {
         if (two !== "")
         {
@@ -123,7 +162,7 @@ function calculate(str, e)
     let display_str = `${one} ${op} ${two}`;
     display.textContent = display_str;
 
-    if (str === "AC")
+    if (str === "AC" || str === "Escape")
     {
         one = "";
         op = "";
